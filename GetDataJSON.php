@@ -41,19 +41,19 @@ class GetData
 		echo "<br>";}
                 $index = self::getIndexProvince($province);
                 if(isset($index)){
-                        
+                        /*
 			$data_Buil = $row['Buil'];
                         $data_ID = $row['ID'];
                         $data_room = $row['room'];
                         $data_Devision = $row['Devision']->[$index];
                         $data_tel = $row['tel'];
-                       
-			/*$data_Buil = $row['Buil']->[$index];
+                        */
+			$data_Buil = $row['Buil']->[$index];
                         $data_ID = $row['ID']->[$index];
                         $data_room = $row['room']->[$index];
                         $data_Devision = $row['Devision']->[$index];
                         $data_tel = $row['tel']->[$index];
-                       */
+                       
 
                         $data_array = array(
                         
