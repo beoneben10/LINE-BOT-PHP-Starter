@@ -8,7 +8,7 @@ class GetData
         public static function getIndexProvince($provinceTHName)
         {
 
-                $province = "สำนักงาน ฝ่ายบริหาร";
+                $province = "ตึก หอ อาคาร หมวด บ้าน กลุ่มงาน";
                 $ex_province = explode(" ", $province);
 
                 foreach ($ex_province as $key => $value) {
@@ -42,12 +42,18 @@ class GetData
                 $index = self::getIndexProvince($province);
                 if(isset($index)){
                         
-                        $data_Buil = $row['Buil']->[$index];
+			$data_Buil = $obj->$index->$row['Buil'];
+                        $data_ID = $obj->$index->$row['ID'];
+                        $data_room = $obj->$index->$row['room'];
+                        $data_Devision = $obj->$index->$row['Devision'];
+                        $data_tel = $obj->$index->$row['tel'];
+                       
+			/*$data_Buil = $row['Buil']->[$index];
                         $data_ID = $row['ID']->[$index];
                         $data_room = $row['room']->[$index];
                         $data_Devision = $row['Devision']->[$index];
                         $data_tel = $row['tel']->[$index];
-                       
+                       */
 
                         $data_array = array(
                         
