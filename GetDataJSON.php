@@ -8,7 +8,7 @@ class GetData
         public static function getIndexProvince($provinceTHName)
         {
 
-                $province = "ตึก หอ อาคาร หมวด บ้าน กลุ่มงาน";
+                $province = "สำนักงาน ฝ่ายบริหาร";
                 $ex_province = explode(" ", $province);
 
                 foreach ($ex_province as $key => $value) {
@@ -23,7 +23,7 @@ class GetData
 
                 $ch = curl_init(); 
                 // set url สำหรับดึงข้อมูล 
-                curl_setopt($ch, CURLOPT_URL, "https://www.namo.xyz/lineben/myfile.json"); 
+                curl_setopt($ch, CURLOPT_URL, "https://www.namo.xyz/lineben/v1.php"); 
                 //return the transfer as a string 
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
                 // ตัวแปร $output เก็บข้อมูลทั้งหมดที่ดึงมา 
@@ -32,23 +32,18 @@ class GetData
                 curl_close($ch);    
                 // output ออกไปครับ
                 $obj = json_decode($output);
-                foreach ($obj as $row){
-		echo $row['Buil']." ";
-		echo $row['ID']." ";
-		echo $row['room']." ";
-		echo $row['Devision']." ";
-		echo $row['tel']." ";
-		echo "<br>";}
+		foreach ($obj as $row){
+			echo $row['Buil'];
+			echo $row['ID'];
+			echo $row['room'];
+			echo $row['Devision'];
+			echo $row['tel'];	
+		}
                 $index = self::getIndexProvince($province);
                 if(isset($index)){
-                        /*
-			$data_Buil = $row['Buil'];
-                        $data_ID = $row['ID'];
-                        $data_room = $row['room'];
-                        $data_Devision = $row['Devision']->[$index];
-                        $data_tel = $row['tel'];
-                        */
-			$data_Buil = $row['Buil']->[$index];
+			
+                      
+                        $data_Buil = $row['Buil']->[$index];
                         $data_ID = $row['ID']->[$index];
                         $data_room = $row['room']->[$index];
                         $data_Devision = $row['Devision']->[$index];
@@ -65,7 +60,7 @@ class GetData
                         
                         "KEY" => "{$index}",
                         );
-
+			
                         return $data_array;
 
                 }else {
