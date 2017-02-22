@@ -44,7 +44,7 @@ class msg{
 		$mysqli->query($query);
 		$mysqli->close();
 		*/
-		
+		mysql_close($link);
 		$this->replyMSG($userID);
 	}
 	public function pushMSG($userID,$text){
