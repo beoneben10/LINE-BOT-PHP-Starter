@@ -33,7 +33,7 @@ class msg{
 		$database = 'u412868043_line';
 		$mysqli = new mysqli($server,$user,$password,$database);
 		mysqli_set_charset($mysqli,"utf8");
-		$query = "INSERT INTO test25 (token,user,txt,status) VALUES ('".$token."','".$userID."','".$txt."','0')";
+		$query = "INSERT INTO test26 (token,userID,txt,status) VALUES ('".$token."','".$userID."','".$txt."','0')";
 		$mysqli->query($query);
 		$mysqli->close();
 		$this->replyMSG($userID);
