@@ -33,7 +33,7 @@ class msg{
 	$database = 'u412868043_line';
 	$link = mysql_connect ($server, $user, $password)or die("ติดต่อ HOST ไม่ได้");
         mysql_select_db($database) or die("ติดต่อฐานข้อมูลไม่ได้");
-	$sql = "INSERT INTO test26 (token,userID,txt,status) VALUES ('$token','$userID','$txt',"0")";
+	$sql = "INSERT INTO test26 (token,userID,txt,status) VALUES ('".$token."','".$userID."','".$txt."','0')";
     	$result = mysql_query($sql);
     	mysql_close($link)
 	}
