@@ -13,14 +13,14 @@ class msg{
 				$this->replyMSG($token,"ntkacml");
 				break;
 			case 'แจ้งปัญหา':
-				$this->replyMSG($token,"กรุณาแจ้งข้อมูลในรูปแบบ \n แจ้งปัญหา:Internet มีปัญหาที่อาคารภูมิ:นพดล");
+				$this->replyMSG($token,"กรุณาแจ้งข้อมูลให้ชัดเจน");
 				$this->pushMSG($userID,"รับทราบข้อมูล \n เมื่อแก้ไขเสร็จเรียบร้อยจะแจ้งให้ทราบภายหลัง");
 				sleep(20);
 				$this->pushMSG($userID,'แก้ไขปัญหาเรียบร้อยแล้ว');
 				break;
 			default:
 				$this->replyMSG($token,"เราไม่เข้าใจในสิ้งที่คุณกรอกข้อมูลเข้ามา");
-				$this->pushMSG($userID,"กรุณาเลือกเมนูที่ท่านต้องการ\n1.เบน\n2.เบน1\n3.เบน2\n4.แจ้งปัญหา\n\nขอบคุณครับ ");
+				$this->pushMSG($userID,"กรุณาเลือกเมนูที่ท่านต้องการ\n1.เบน\n2.id\n3.fb\n4.แจ้งปัญหา\n\nขอบคุณครับ ");
 				break;
 		}	
 	}
