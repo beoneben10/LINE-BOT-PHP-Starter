@@ -4,30 +4,30 @@ class msg{
 		$this->conDB($token,$userID,$txt);
 		switch ($txt) {
 			case 'เบน':
-				$this->replyMSG($token,"Nuttapon . K \n นักเรียน");
+				$this->replyMSG($token,"ณัฐพล คำป่าแลว");
 				break;
-			case 'รอบเบน':
-				$this->replyMSG($token,"Robben \n นักเตะบอล");
+			case 'เบน1':
+				$this->replyMSG($token,"beoneben10");
 				break;
-			case 'วา':
-				$this->replyMSG($token,"น.ส.สุภารัตน์ \n นักประกาศข่าว");
+			case 'เบน2':
+				$this->replyMSG($token,"ntkacml");
 				break;
 			case 'แจ้งปัญหา':
-				$this->replyMSG($token,"กรุณาแจ้งข้อมูลในรูปแบบ \n แจ้งปัญหา:Internet มีปัญหาที่อาคารใหม่ 8 ชั้น");
+				$this->replyMSG($token,"กรุณาแจ้งข้อมูลในรูปแบบ \n แจ้งปัญหา:Internet มีปัญหาที่อาคารภูมิ:นพดล");
 				$this->pushMSG($userID,"รับทราบข้อมูล \n เมื่อแก้ไขเสร็จเรียบร้อยจะแจ้งให้ทราบภายหลัง");
 				sleep(20);
 				$this->pushMSG($userID,'แก้ไขปัญหาเรียบร้อยแล้ว');
 				break;
 			default:
 				$this->replyMSG($token,"เราไม่เข้าใจในสิ้งที่คุณกรอกข้อมูลเข้ามา");
-				$this->pushMSG($userID,"กรุณาเลือกเมนูที่ท่านต้องการ\n1.เบน\n2.รอบเบน\n3.วา\n4.แจ้งปัญหา\n\nขอบคุณครับ ");
+				$this->pushMSG($userID,"กรุณาเลือกเมนูที่ท่านต้องการ\n1.เบน\n2.เบน1\n3.เบน2\n4.แจ้งปัญหา\n\nขอบคุณครับ ");
 				break;
 		}	
 	}
 	public function conDB($token,$userID,$txt){
-		$mysqli = new mysqli("127.0.0.1", "root", "ntkacml1", "test");
+		$mysqli = new mysqli("mysql.hostinger.in.th:3306", "u412868043_line", "line00--", "u412868043_line");
 		mysqli_set_charset($mysqli,"utf8");
-		$query = "INSERT INTO line (token,user,txt,status) VALUES ('".$token."','".$userID."','".$txt."','0')";
+		$query = "INSERT INTO test25 (token,user,txt,status) VALUES ('".$token."','".$userID."','".$txt."','0')";
 		$mysqli->query($query);
 		$mysqli->close();
 		$this->replyMSG($userID);
@@ -38,11 +38,11 @@ class msg{
 					'type' => 'text',
 					'text' => $text
 				],
-				/*[
+				[
 					'type'=>'sticker',
 				    'packageId' => '1',
 				    'stickerId' => '3'
-				]*/
+				]
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
