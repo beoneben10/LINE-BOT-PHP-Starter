@@ -35,7 +35,8 @@ class msg{
         mysql_select_db($database) or die("ติดต่อฐานข้อมูลไม่ได้");
 	$sql = "INSERT INTO test26 (token,userID,txt,status) VALUES ('".$token."','".$userID."','".$txt."','0')";
     	$result = mysql_query($sql);
-    	mysql_close($link)
+    	mysql_close($link);
+	$this->replyMSG($userID);
 	}
 	public function pushMSG($userID,$text){
 			$messages =[
