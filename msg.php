@@ -28,11 +28,14 @@ class msg{
 	$host = 'mysql.hostinger.in.th';
         $port = '3306';
         $server = $host . ':' . $port;
-	$mysqli = new mysqli($server, "u412868043_line", "line00--", "u412868043_line");
-	mysqli_set_charset($mysqli,"utf8");
-	$query = "INSERT INTO test26 (token,userID,txt,status) VALUES ('".$token."','".$userID."','".$txt."','0')";
-	$mysqli->query($query);
-	$mysqli->close();
+	$user = "u412868043_line";
+	$pass = "line00--";
+	$dbname = "u412868043_line";
+	$conn=  mysql_connect($host,$user,$pass) or die("ไม่สามารถเชื่อมต่อฐานข้อมูลได้");
+	mysql_select_db($dbname,$conn);
+	$sql = "INSERT INTO test26 (token,userID,txt,status) VALUES ('".$token."','".$userID."','".$txt."','0')";
+	$result =mysql_query($sql);
+	mysql_close($link);
 	$this->replyMSG($userID);
 	}
 	public function pushMSG($userID,$text){
