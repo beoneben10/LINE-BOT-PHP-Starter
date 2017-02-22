@@ -25,7 +25,13 @@ class msg{
 		}	
 	}
 	public function conDB($token,$userID,$txt){
-		$mysqli = new mysqli("mysql.hostinger.in.th:3306","u412868043_line","line00--","u412868043_line");
+		$host = 'mysql.hostinger.in.th';
+       	 	$port = '3306';
+        	$server = $host . ':' . $port;
+       		$user = 'u412868043_line';
+        	$password = 'line00--';
+		$database = 'u412868043_line';
+		$mysqli = new mysqli($server,$user,$password,$database);
 		mysqli_set_charset($mysqli,"utf8");
 		$query = "INSERT INTO test25 (token,user,txt,status) VALUES ('".$token."','".$userID."','".$txt."','0')";
 		$mysqli->query($query);
