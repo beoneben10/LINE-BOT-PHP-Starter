@@ -1,15 +1,15 @@
 <?php  
 class msg{
 	public function showMSG($token,$userID,$txt){
-		$this->conDB($token,$userID,$txt);
+		$this->insertMSG($token,$userID,$txt);
 		switch ($txt) {
 			case 'เบน':
 				$this->replyMSG($token,"ณัฐพล คำป่าแลว");
 				break;
-			case 'เบน1':
+			case 'id':
 				$this->replyMSG($token,"beoneben10");
 				break;
-			case 'เบน2':
+			case 'fb':
 				$this->replyMSG($token,"ntkacml");
 				break;
 			case 'แจ้งปัญหา':
@@ -24,20 +24,15 @@ class msg{
 				break;
 		}	
 	}
-	public function conDB($token,$userID,$txt){
-		$host = 'mysql.hostinger.in.th';
-       	 	$port = '3306';
-        	$server = $host . ':' . $port;
-       		$user = 'u412868043_line';
-        	$password = 'line00--';
-		$database = 'u412868043_line';
-		$mysqli = new mysqli($server,$user,$password,$database);
-		mysqli_set_charset($mysqli,"utf8");
-		$query = "INSERT INTO test26 (token,userID,txt,status) VALUES ('".$token."','".$userID."','".$txt."','0')";
-		$mysqli->query($query);
-		$mysqli->close();
-		$this->replyMSG($userID);
-	}
+	public function insertMSG($token,$userID,$txt){
+    	$arr = array(
+    						'token' => $token,
+    						'userID' =>$userID,
+    						'txt' =>$txt,
+    						'status' => 0
+    						 );
+    	$this->db->insert('test26',$arr);
+	
 	public function pushMSG($userID,$text){
 			$messages =[
 				[
