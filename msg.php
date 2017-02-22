@@ -25,13 +25,7 @@ class msg{
 		}	
 	}
 	public function conDB($token,$userID,$txt){
-		$host = 'mysql.hostinger.in.th';
-       		$port = '3306';
-		$server = $host . ':' . $port;
-		$user = 'u412868043_line';
-        	$password = 'line00--';
-		$database = 'u412868043_line';
-		$mysqli = new mysqli($server,$user,$password,$database);
+		$mysqli = new mysqli("mysql.hostinger.in.th:3306","u412868043_line","line00--","u412868043_line");
 		mysqli_set_charset($mysqli,"utf8");
 		$query = "INSERT INTO test25 (token,user,txt,status) VALUES ('".$token."','".$userID."','".$txt."','0')";
 		$mysqli->query($query);
@@ -44,11 +38,6 @@ class msg{
 					'type' => 'text',
 					'text' => $text
 				],
-				[
-					'type'=>'sticker',
-				    'packageId' => '1',
-				    'stickerId' => '3'
-				]
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
