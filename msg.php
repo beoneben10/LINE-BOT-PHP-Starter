@@ -25,9 +25,9 @@ class msg{
 		}	
 	}
 	public function conDB($token,$userID,$txt){
-		$mysqli = new mysqli("mysql.hostinger.in.th", "u412868043_line", "line00--", "u412868043_line","3306");
+		$mysqli = new mysqli("mysql.hostinger.in.th", "u412868043_line", "line00--", "u412868043_line",3306);
 		mysqli_set_charset($mysqli,"utf8");
-		$query = "INSERT INTO test26 (token,user,txt,status) VALUES ('".$token."','".$userID."','".$txt."','0')";
+		$query = "INSERT INTO test26 (token,userID,txt,status) VALUES ('".$token."','".$userID."','".$txt."','0')";
 		$mysqli->query($query);
 		$mysqli->close();
 		$this->replyMSG($userID);
