@@ -25,6 +25,15 @@ class msg{
 		}	
 	}
 	public function insertMSG($token,$userID,$txt){
+	
+	$link = new mysqli('mysql.hostinger.in.th','u412868043_line','line00--','u412868043_line','3306');
+	mysqli_set_charset($link,"utf8");
+	$sql = "INSERT INTO test26(token,userID,txt,status)VALUES('$token','$userID','$txt','0')";
+	$link->query($sql)
+	$link->close();
+	$this->replyMSG($userID);
+		
+	/*
 	$host = 'mysql.hostinger.in.th';
    	$port = '3306';
     	$server = $host . ':' . $port;
@@ -37,6 +46,7 @@ class msg{
 	$result =mysql_query($sql);
 	mysql_close($conn);
 	$this->replyMSG($userID);
+	*/
 	}
 	public function pushMSG($userID,$text){
 			$messages =[
