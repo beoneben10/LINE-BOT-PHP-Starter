@@ -14,7 +14,7 @@ if (!is_null($events['events'])) {
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
 			//$text = $event['message']['text'];
-			$mm->showMSG($event['replyToken'],$event['source']['userId'],$event['message']['text']);
+			$mm->showMSG($event['token'],$event['source']['userID'],$event['message']['txt']);
 		}
 	}
 }
