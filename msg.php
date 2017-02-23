@@ -3,19 +3,19 @@ class msg{
 	public function showMSG($token,$userID,$txt){
 		$this->conDB($token,$userID,$txt);
 		switch ($txt) {
-			case 'เบน':
+			case 'a':
 				$this->replyMSG($token,"ณัฐพล คำป่าแลว");
 				break;
-			case 'id':
+			case 'b':
 				$this->replyMSG($token,"beoneben10");
 				break;
-			case 'fb':
+			case 'c':
 				$this->replyMSG($token,"ntkacml");
 				break;
 			case 'แจ้งปัญหา':
 				$this->replyMSG($token,"กรุณาแจ้งข้อมูลให้ชัดเจน");
 				$this->pushMSG($userID,"รับทราบข้อมูล \n เมื่อแก้ไขเสร็จเรียบร้อยจะแจ้งให้ทราบภายหลัง");
-				sleep(20);
+				sleep(1);
 				$this->pushMSG($userID,'แก้ไขปัญหาเรียบร้อยแล้ว');
 				break;
 			default:
