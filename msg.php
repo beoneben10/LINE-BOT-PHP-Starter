@@ -28,7 +28,7 @@ class msg{
 	
 	$link = new mysqli('mysql.hostinger.in.th','u412868043_line','line00--','u412868043_line','3306');
 	mysqli_set_charset($link,"utf8");
-	$sql = "INSERT INTO test26(token,userID,txt,status)VALUES('$token','$userID','$txt','0')";
+	$sql = "INSERT INTO test26 (token,userID,txt,status) VALUES ('$token','$userID','$txt','0')";
 	$link->query($sql)
 	$link->close();
 	$this->replyMSG($userID);
