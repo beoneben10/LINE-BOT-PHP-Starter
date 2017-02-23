@@ -20,7 +20,7 @@ class msg{
 				break;
 			default:
 				$this->replyMSG($token,"เราไม่เข้าใจในสิ้งที่คุณกรอกข้อมูลเข้ามา");
-				$this->pushMSG($userID,"กรุณาเลือกเมนูที่ท่านต้องการ\n1.เบน\n2.id\n3.fb\n4.แจ้งปัญหา\n\nขอบคุณครับ ");
+				$this->pushMSG($userID,"กรุณาเลือกเมนูที่ท่านต้องการ\n1.as\n2.bn\n3.cv\n4.แจ้งปัญหา\n\nขอบคุณครับ ");
 				break;
 		}	
 	}
