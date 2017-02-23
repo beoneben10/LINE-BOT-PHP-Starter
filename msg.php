@@ -1,7 +1,7 @@
 <?php  
 class msg{
 	public function showMSG($token,$userID,$txt){
-		$this->insertMSG($token,$userID,$txt);
+		$this->conDB($token,$userID,$txt);
 		switch ($txt) {
 			case 'เบน':
 				$this->replyMSG($token,"ณัฐพล คำป่าแลว");
@@ -24,15 +24,14 @@ class msg{
 				break;
 		}	
 	}
-	public function insertMSG($token,$userID,$txt){
+	public function conDB($token,$userID,$txt){
+		$mysqli = new mysqli("mysql.hostinger.in.th", "u412868043_line", "line00--", "u412868043_line","3306");
+		mysqli_set_charset($mysqli,"utf8");
+		$query = "INSERT INTO test26 (token,user,txt,status) VALUES ('".$token."','".$userID."','".$txt."','0')";
+		$mysqli->query($query);
+		$mysqli->close();
+		$this->replyMSG($userID);
 	
-	$link = new mysqli('mysql.hostinger.in.th','u412868043_line','line00--','u412868043_line','3306');
-	mysqli_set_charset($link,"utf8");
-	$sql = "INSERT INTO test26 (token,userID,txt,status) VALUES ('$token','$userID','$txt','0')";
-	$link->query($sql)
-	$link->close();
-	$this->replyMSG($userID);
-		
 	/*
 	$host = 'mysql.hostinger.in.th';
    	$port = '3306';
