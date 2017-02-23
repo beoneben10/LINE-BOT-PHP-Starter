@@ -13,10 +13,10 @@ if (!is_null($events['events'])) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			// Get text sent
-			$this->con($event['replyToken'],$event['source']['userId'],$event['message']['id'],$event['message']['text']);
+			
 			//$text = $event['message']['text'];
-			else {$mm->showMSG($event['replyToken'],$event['source']['userId'],$event['message']['text']);
-			     }
+			$mm->showMSG($event['replyToken'],$event['source']['userId'],$event['message']['text']);
+			    
 		}
 	}
 }
