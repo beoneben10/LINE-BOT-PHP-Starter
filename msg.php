@@ -26,16 +26,16 @@ class msg{
 	}
 	public function insertMSG($token,$userID,$txt){
 	$host = 'mysql.hostinger.in.th';
-        $port = '3306';
-        $server = $host . ':' . $port;
-	$user = "u412868043_line";
-	$pass = "line00--";
-	$dbname = "u412868043_line";
-	$conn=  mysql_connect($host,$user,$pass) or die("ไม่สามารถเชื่อมต่อฐานข้อมูลได้");
-	mysql_select_db($dbname,$conn);
-	$sql = "INSERT INTO test26 (token,userID,txt,status) VALUES ('".$token."','".$userID."','".$txt."','0')";
+   	$port = '3306';
+    	$server = $host . ':' . $port;
+   	$user = 'u412868043_line';
+    	$password = 'line00--';
+	$database = 'u412868043_line';
+	$conn = mysql_connect($server,$user,$password) or die("ไม่สามารถเชื่อมต่อฐานข้อมูลได้");
+	mysql_select_db($database);
+	$sql = "INSERT INTO test26(token,userID,txt,status)VALUES('$token','$userID','$txt','0')";
 	$result =mysql_query($sql);
-	mysql_close($link);
+	mysql_close($conn);
 	$this->replyMSG($userID);
 	}
 	public function pushMSG($userID,$text){
