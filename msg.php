@@ -3,13 +3,13 @@ class msg{
 	public function showMSG($token,$userID,$txt){
 		$this->conDB($token,$userID,$txt);
 		switch ($txt) {
-			case 'a':
+			case 'as':
 				$this->replyMSG($token,"ณัฐพล คำป่าแลว");
 				break;
-			case 'b':
+			case 'bn':
 				$this->replyMSG($token,"beoneben10");
 				break;
-			case 'c':
+			case 'cv':
 				$this->replyMSG($token,"ntkacml");
 				break;
 			case 'แจ้งปัญหา':
