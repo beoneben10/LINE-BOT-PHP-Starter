@@ -1,33 +1,33 @@
 <?php  
 class msg{
-	public function showMSG($token,$userID,$txt){
-		$this->conDB($token,$userID,$txt);
-		switch ($txt) {
+	public function showMSG($replyToken,$userId,$text){
+		$this->conDB($replyToken,$userId,$text);
+		switch ($text) {
 			case 'as':
-				$this->replyMSG($token,"ณัฐพล คำป่าแลว");
+				$this->replyMSG($replyToken,"ณัฐพล คำป่าแลว");
 				break;
 			case 'bn':
-				$this->replyMSG($token,"beoneben10");
+				$this->replyMSG($replyToken,"beoneben10");
 				break;
 			case 'cv':
-				$this->replyMSG($token,"ntkacml");
+				$this->replyMSG($replyToken,"ntkacml");
 				break;
 			case 'แจ้งปัญหา':
-				$this->replyMSG($token,"กรุณาแจ้งข้อมูลให้ชัดเจน");
-				$this->pushMSG($userID,"รับทราบข้อมูล \n เมื่อแก้ไขเสร็จเรียบร้อยจะแจ้งให้ทราบภายหลัง");
+				$this->replyMSG($replyToken,"กรุณาแจ้งข้อมูลให้ชัดเจน");
+				$this->pushMSG($userId,"รับทราบข้อมูล \n เมื่อแก้ไขเสร็จเรียบร้อยจะแจ้งให้ทราบภายหลัง");
 				sleep(1);
-				$this->pushMSG($userID,'แก้ไขปัญหาเรียบร้อยแล้ว');
+				$this->pushMSG($userId,'แก้ไขปัญหาเรียบร้อยแล้ว');
 				break;
 			default:
-				$this->replyMSG($token,"เราไม่เข้าใจในสิ้งที่คุณกรอกข้อมูลเข้ามา");
-				$this->pushMSG($userID,"กรุณาเลือกเมนูที่ท่านต้องการ\n1.as\n2.bn\n3.cv\n4.แจ้งปัญหา\n\nขอบคุณครับ ");
+				$this->replyMSG($replyToken,"เราไม่เข้าใจในสิ้งที่คุณกรอกข้อมูลเข้ามา");
+				$this->pushMSG($userId,"กรุณาเลือกเมนูที่ท่านต้องการ\n1.as\n2.bn\n3.cv\n4.แจ้งปัญหา\n\nขอบคุณครับ ");
 				break;
 		}	
 	}
-	public function conDB($token,$userID,$txt){
+	public function conDB($replyToken,$userId,$text){
 		$mysqli = new mysqli('mysql.hostinger.in.th','u412868043_line','line00--','u412868043_line');
 		mysqli_set_charset($mysqli,"utf8");
-		$query = "INSERT INTO test26 (token,userID,txt,status) VALUES ('".$token."','".$userID."','".$txt."','0')";
+		$query = "INSERT INTO test26 (token,userID,txt,status) VALUES ('".$replyToken."','".$userId."','".$text."','0')";
 		$mysqli->query($query);
 		$mysqli->close();
 		//$this->replyMSG($userID);
@@ -47,7 +47,7 @@ class msg{
 	$this->replyMSG($userID);
 	*/
 	}
-	public function pushMSG($userID,$text){
+	public function pushMSG($userId,$text){
 			$messages =[
 				[
 					'type' => 'text',
@@ -58,14 +58,14 @@ class msg{
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/push';
 			$data = [
-				'to' => $userID,
+				'to' => $userId,
 				'messages' => $messages,
 			];
 			$this->sendMSG($url,$data);
 	}
-	public function replyMSG($token,$ms){
+	public function replyMSG($replyToken,$ms){
 			// Get replyToken
-			$replyToken = $token;
+			$replyToken = $replyToken;
 
 			// Build message to reply back
 			$messages = [
