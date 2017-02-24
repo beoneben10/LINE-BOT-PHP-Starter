@@ -30,7 +30,7 @@ class msg{
 		$query = "INSERT INTO test26 (token,userID,txt,status) VALUES ('".$replyToken."','".$userId."','".$text."','0')";
 		$mysqli->query($query);
 		$mysqli->close();
-		//$this->replyMSG($userID);
+		$this->replyMSG($userId);
 	
 	/*
 	$host = 'mysql.hostinger.in.th';
