@@ -24,7 +24,7 @@ class msg{
 				break;
 		}	
 	}
-	private function conDB($token,$userID,$txt){
+	public function conDB($token,$userID,$txt){
 		$host ='mysql.hostinger.in.th';
 		$user = 'u412868043_line';
 		$password = 'line00--';
