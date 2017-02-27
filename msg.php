@@ -35,7 +35,7 @@ class msg{
         	$user = 'u412868043_line';
         	$password = 'line00--';
 		$database = 'u412868043_line';
-        	$link = new mysqli ($server , $user , $password , $database);
+        	$link = new mysqli ($server,$user,$password,$database);
         	mysqli_set_charset($mysqli,"utf8");
 		$query = "INSERT INTO test26 (token,userID,txt,status) VALUES ('".$token."','".$userID."','".$txt."','0')";
 		$link->query($query);
