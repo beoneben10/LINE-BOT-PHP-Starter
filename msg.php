@@ -29,30 +29,12 @@ class msg{
 		}	
 	}
 	public function conDB($token,$userID,$txt){
-		//$mysqli = new mysqli("mysql.hostinger.in.th", "u412868043_line", "line00--", "u412868043_line");
-		//mysqli_set_charset($mysqli,"utf8");
-		//$query = "INSERT INTO test26 (token,userID,txt,status) VALUES ('".$token."','".$userID."','".$txt."','0')";
-		//$mysqli->query($query);
-		//$mysqli->close();
-		$host = 'mysql.hostinger.in.th';
-		$port = '3306';
-		$server = $host . ':' . $port;
-        	$user = 'u412868043_line';
-        	$password = 'line00--';
-		$database = 'u412868043_line';
         	$link = new mysqli ('mysql.hostinger.in.th:3306','u412868043_line','line00--','u412868043_line');
         	mysqli_set_charset($mysqli,"utf8");
 		$query = "INSERT INTO test26 (token,userID,txt,status) VALUES ('".$token."','".$userID."','".$txt."','0')";
 		$link->query($query);
 		$link->close();
 		//$this->replyMSG($userID);
-	}echo "conDB($token)";
-	public function conn($token,$userID,$xt){
-	$link = mysql_connect('mysql.hostinger.in.th','u412868043_line','line00--');
-	mysql_select_db('u412868043_line',$link);
-	$sql = "INSERT INTO test26 (token,userID,txt,status)VALUES('$token','$userID','$txt','0')";
-	$query = mysql_query($sql);
-	mysql_close($link);	
 	}
 	public function pushMSG($userID,$text){
 			$messages =[
