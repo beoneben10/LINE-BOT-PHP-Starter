@@ -46,7 +46,7 @@ class msg{
 		$link->query($query);
 		$link->close();
 		//$this->replyMSG($userID);
-	}
+	}echo "conDB($token)";
 	public function conn($token,$userID,$xt){
 	$link = mysql_connect('mysql.hostinger.in.th','u412868043_line','line00--');
 	mysql_select_db('u412868043_line',$link);
