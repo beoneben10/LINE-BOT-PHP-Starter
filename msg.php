@@ -8,6 +8,7 @@ class msg{
 				break;
 			case 'ต้า':
 				$this->replyMSG($token,"นายนพดล ทองชื่นตระกูล \n\n ตำแหน่ง นวก.คอมพิวเตอร์");
+				$this->replyMSG($token,$userID);
 				break;
 			case 'มิ้น':
 				$this->replyMSG($token,"น.ส.พณิชยาพร นวลคำ \n นักวิชาการคอมพิวเตอร์");
