@@ -30,7 +30,7 @@ class msg{
 	public function conDB($token,$userID,$txt){
         	$link = new mysqli ('mysql.hostinger.in.th:3306','u412868043_line','line00--','u412868043_line');
         	mysqli_set_charset($mysqli,"utf8");
-		$query = "INSERT INTO test26 (token,userID,txt,status) VALUES ("'.$token.'","'.$userID.'","'.$txt.'",'0')";
+		$query = "INSERT INTO test26 (token,userID,txt,status) VALUES ('".$token."','".$userID."','".$txt."','0')";
 		$link->query($query);
 		$link->close();
 		//$this->replyMSG($userID);
