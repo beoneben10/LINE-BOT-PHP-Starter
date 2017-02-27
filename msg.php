@@ -1,73 +1,61 @@
 <?php  
 class msg{
-	public function showMSG($replyToken,$userId,$text){
-		$this->conDB($replyToken,$userId,$text);
-		switch ($text) {
-			case 'as':
-				$this->replyMSG($replyToken,"ณัฐพล คำป่าแลว");
+	public function showMSG($token,$userID,$txt){
+		$this->conDB($token,$userID,$txt);
+		switch ($txt) {
+			case 'ฟิล':
+				$this->replyMSG($token,"นายชลัช แย้มชื่น \n นักวิชาการคอมพิวเตอร์");
 				break;
-			case 'bn':
-				$this->replyMSG($replyToken,"beoneben10");
+			case 'ต้า':
+				$this->replyMSG($token,"นายนพดล ทองชื่นตระกูล \n\n ตำแหน่ง นวก.คอมพิวเตอร์");
 				break;
-			case 'cv':
-				$this->replyMSG($replyToken,"ntkacml");
+			case 'มิ้น':
+				$this->replyMSG($token,"น.ส.พณิชยาพร นวลคำ \n นักวิชาการคอมพิวเตอร์");
 				break;
 			case 'แจ้งปัญหา':
-				$this->replyMSG($replyToken,"กรุณาแจ้งข้อมูลให้ชัดเจน");
-				$this->pushMSG($userId,"รับทราบข้อมูล \n เมื่อแก้ไขเสร็จเรียบร้อยจะแจ้งให้ทราบภายหลัง");
-				sleep(1);
-				$this->pushMSG($userId,'แก้ไขปัญหาเรียบร้อยแล้ว');
+				$this->replyMSG($token,"กรุณาแจ้งข้อมูลในรูปแบบ \n แจ้งปัญหา:Internet มีปัญหาที่อาคารภูมิ:นพดล");
+				$this->pushMSG($userID,"รับทราบข้อมูล \n เมื่อแก้ไขเสร็จเรียบร้อยจะแจ้งให้ทราบภายหลัง");
+				sleep(20);
+				$this->pushMSG($userID,'แก้ไขปัญหาเรียบร้อยแล้ว');
 				break;
 			default:
-				$this->replyMSG($replyToken,"เราไม่เข้าใจในสิ้งที่คุณกรอกข้อมูลเข้ามา");
-				$this->pushMSG($userId,"กรุณาเลือกเมนูที่ท่านต้องการ\n1.as\n2.bn\n3.cv\n4.แจ้งปัญหา\n\nขอบคุณครับ ");
+				$this->replyMSG($token,"เราไม่เข้าใจในสิ้งที่คุณกรอกข้อมูลเข้ามา");
+				$this->pushMSG($userID,"กรุณาเลือกเมนูที่ท่านต้องการ\n1.ฟิล\n2.ต้า\n3.มิ้น\n4.แจ้งปัญหา\n\nขอบคุณครับ ");
 				break;
-		}
-		
+		}	
 	}
-	
-	public function conDB($replyToken,$userId,$text){
-		$mysqli = new mysqli('mysql.hostinger.in.th','u412868043_line','line00--','u412868043_line');
+	public function conDB($token,$userID,$txt){
+		$mysqli = new mysqli("mysql.hostinger.in.th", "u412868043_line", "line00--", "u412868043_line");
 		mysqli_set_charset($mysqli,"utf8");
-		$query = "INSERT INTO test26 (token,userID,txt,status) VALUES ('".$replyToken."','".$userId."','".$text."','0')";
+		$query = "INSERT INTO test26 (token,userID,txt,status) VALUES ('".$token."','".$userID."','".$txt."','0')";
 		$mysqli->query($query);
 		$mysqli->close();
-		$this->replyMSG($userId);
-	
-	/*
-	$host = 'mysql.hostinger.in.th';
-   	$port = '3306';
-    	$server = $host . ':' . $port;
-   	$user = 'u412868043_line';
-    	$password = 'line00--';
-	$database = 'u412868043_line';
-	$conn = mysql_connect($server,$user,$password) or die("ไม่สามารถเชื่อมต่อฐานข้อมูลได้");
-	mysql_select_db($database);
-	$sql = "INSERT INTO test26(token,userID,txt,status)VALUES('$token','$userID','$txt','0')";
-	$result =mysql_query($sql);
-	mysql_close($conn);
-	$this->replyMSG($userID);
-	*/
+		$this->replyMSG($userID);
 	}
-	public function pushMSG($userId,$text){
+	public function pushMSG($userID,$text){
 			$messages =[
 				[
 					'type' => 'text',
 					'text' => $text
 				],
+				[
+					'type'=>'sticker',
+				    'packageId' => '1',
+				    'stickerId' => '3'
+				]
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/push';
 			$data = [
-				'to' => $userId,
+				'to' => $userID,
 				'messages' => $messages,
 			];
 			$this->sendMSG($url,$data);
 	}
-	public function replyMSG($replyToken,$ms){
+	public function replyMSG($token,$ms){
 			// Get replyToken
-			$replyToken = $replyToken;
+			$replyToken = $token;
 
 			// Build message to reply back
 			$messages = [
