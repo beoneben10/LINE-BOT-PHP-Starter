@@ -3,15 +3,17 @@ class msg{
 	public function showMSG($token,$userID,$txt){
 		$this->conDB($token,$userID,$txt);
 		switch ($txt) {
-			case 'ฟิล':
-				$this->replyMSG($token,"นายชลัช แย้มชื่น \n นักวิชาการคอมพิวเตอร์");
+			case 'ห้า':
+				//$this->replyMSG($token,"นายชลัช แย้มชื่น \n นักวิชาการคอมพิวเตอร์");
+				$this->replyMSG($token,$token);
 				break;
 			case 'ต้า':
 				//$this->replyMSG($token,"นายนพดล ทองชื่นตระกูล \n\n ตำแหน่ง นวก.คอมพิวเตอร์");
 				$this->replyMSG($token,$userID);
 				break;
-			case 'มิ้น':
-				$this->replyMSG($token,"น.ส.พณิชยาพร นวลคำ \n นักวิชาการคอมพิวเตอร์");
+			case 'ก้า':
+				//$this->replyMSG($token,"น.ส.พณิชยาพร นวลคำ \n นักวิชาการคอมพิวเตอร์");
+				$this->replyMSG($token,$txt);
 				break;
 			case 'แจ้งปัญหา':
 				$this->replyMSG($token,"กรุณาแจ้งข้อมูลในรูปแบบ \n แจ้งปัญหา:Internet มีปัญหาที่อาคารภูมิ:นพดล");
