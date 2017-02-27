@@ -1,8 +1,8 @@
 <?php  
 class msg{
 	public function showMSG($token,$userID,$txt){
-		$this->conDB($token,$userID,$txt);
-		//$this->conn($token,$userID,$txt);
+		//$this->conDB($token,$userID,$txt);
+		$this->conn($token,$userID,$txt);
 		switch ($txt) {
 			case 'ห้า':
 				//$this->replyMSG($token,"นายชลัช แย้มชื่น \n นักวิชาการคอมพิวเตอร์");
@@ -36,6 +36,14 @@ class msg{
 		$link->close();
 		//$this->replyMSG($userID);
 	}
+	
+	public function conn($token,$userID,$txt){
+		$link = new mysqli ('mysql.hostinger.in.th:3306','u412868043_line','line00--','u412868043_line');
+        	mysqli_set_charset($mysqli,"utf8");
+		$ar = array( 'token' => '$token','userID' => '$userID','txt' => '$txt','status' => '0');
+		$this->db->insert(test26,$ar)
+	}
+	
 	public function pushMSG($userID,$text){
 			$messages =[
 				[
