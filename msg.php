@@ -22,7 +22,8 @@ class msg{
 				$this->replyMSG($replyToken,"เราไม่เข้าใจในสิ้งที่คุณกรอกข้อมูลเข้ามา");
 				$this->pushMSG($userId,"กรุณาเลือกเมนูที่ท่านต้องการ\n1.as\n2.bn\n3.cv\n4.แจ้งปัญหา\n\nขอบคุณครับ ");
 				break;
-		}	
+		}
+		$this->replyMSG($userId);
 	}
 	/*
 	public function conDB($replyToken,$userId,$text){
