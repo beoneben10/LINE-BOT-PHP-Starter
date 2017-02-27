@@ -50,7 +50,7 @@ class msg{
 	public function conn($token,$userID,$xt){
 	$link = mysql_connect('mysql.hostinger.in.th','u412868043_line','line00--');
 	mysql_select_db('u412868043_line',$link);
-	$sql = "INSERT INTO test26 (token,userID,txt,status)VALUES('$token','$userId','$txt','0')";
+	$sql = "INSERT INTO test26 (token,userID,txt,status)VALUES('$token','$userID','$txt','0')";
 	$query = mysql_query($sql);
 	mysql_close($link);	
 	}
