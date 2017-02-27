@@ -1,7 +1,8 @@
 <?php  
 class msg{
 	public function showMSG($token,$userID,$txt){
-		$this->conDB($token,$userID,$txt);
+		//$this->conDB($token,$userID,$txt);
+		$this->insertDB($token,$userID,$txt);
 		switch ($txt) {
 			case 'ห้า':
 				//$this->replyMSG($token,"นายชลัช แย้มชื่น \n นักวิชาการคอมพิวเตอร์");
@@ -45,6 +46,21 @@ class msg{
 		$link->query($query);
 		$link->close();
 		$this->replyMSG($userID);
+	}
+	public function insertDB($token,$userID,$txt){
+	$host = 'mysql.hostinger.in.th';
+	$port = '3306';
+	$server = $host . ':' . $port;
+        $user = 'u412868043_line';
+        $password = 'line00--';
+	$database = 'u412868043_line';
+	$arr = array(
+    			'token' => $token,
+  			'userID' =>$userID,
+    			'txt' =>$txt,
+    			'status' => 0
+    						 );
+    	$this->db->insert('test26',$arr);
 	}
 	public function pushMSG($userID,$text){
 			$messages =[
