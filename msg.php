@@ -23,8 +23,8 @@ class msg{
 				$this->pushMSG($userID,'แก้ไขปัญหาเรียบร้อยแล้ว');
 				break;
 			default:
-				$this->replyMSG($token,"เราไม่เข้าใจในสิ้งที่คุณกรอกข้อมูลเข้ามา");
-				$this->pushMSG($userID,"กรุณาเลือกเมนูที่ท่านต้องการ\n1.ฟิล\n2.ต้า\n3.มิ้น\n4.แจ้งปัญหา\n\nขอบคุณครับ ");
+				$this->replyMSG($token,"เราไม่เข้าใจ");
+				$this->pushMSG($userID,"กรุณาเลือกเมนูที่ท่านต้องการ\nห้า\nต้า\nก้า\nแจ้งปัญหา\n\nขอบคุณครับ ");
 				break;
 		}	
 	}
