@@ -28,11 +28,17 @@ class msg{
 		}	
 	}
 	public function conDB($token,$userID,$txt){
-        	$link = new mysqli ('mysql.hostinger.in.th','u412868043_line','line00--','u412868043_line');
-        	mysqli_set_charset($mysqli,"utf8");
-		$query = "INSERT INTO test26 (token,userID,txt,status) VALUES ('".$token."','".$userID."','".$txt."','0')";
-		$link->query($query);
-		$link->close();
+		$host = 'mysql.hostinger.in.th';
+        	$port = '3306';
+        	$server = $host . ':' . $port;
+        	$user = 'u412868043_line';
+        	$password = 'line00--';
+		$database = 'u412868043_line';
+        	$link = mysql_connect ($server, $user, $password)or die("ติดต่อ HOST ไม่ได้");
+        	mysql_select_db($database) or die("ติดต่อฐานข้อมูลไม่ได้");
+		$sql = "INSERT INTO test26 (token,userID,txt,status) VALUES ('".$token."','".$userID."','".$txt."','0')";
+		$query = mysql_query($sql);
+		mysql_close();
 		//$this->replyMSG($userID);
 	}
 	public function pushMSG($userID,$text){
