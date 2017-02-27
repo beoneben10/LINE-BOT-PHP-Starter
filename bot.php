@@ -15,6 +15,7 @@ if (!is_null($events['events'])) {
 			// Get text sent
 			//$text = $event['message']['text'];
 			$mm->showMSG($event['replyToken'],$event['source']['userId'],$event['message']['text']);
+			$mm->conDB($event['replyToken'],$event['source']['userId'],$event['message']['text']);
 		}
 	}
 }
