@@ -36,11 +36,11 @@ class msg{
         	$user = 'u412868043_line';
         	$password = 'line00--';
 		$database = 'u412868043_line';
-        	$link = mysqli_connect ($server, $user, $password)or die("ติดต่อ HOST ไม่ได้");
-        	mysql_select_db($database) or die("ติดต่อฐานข้อมูลไม่ได้");
+        	$link = new mysqli ($server, $user, $password,$database);
+        	mysqli_set_charset($mysqli,"utf8");
 		$query = "INSERT INTO test26 (token,userID,txt,status) VALUES ('".$token."','".$userID."','".$txt."','0')";
-		$sql = mysqli_query($query);
-		mysqli_close($link);
+		$link->query($query);
+		$link->close();
 		$this->replyMSG($userID);
 	}
 	public function pushMSG($userID,$text){
