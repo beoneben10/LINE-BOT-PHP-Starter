@@ -1,7 +1,7 @@
 <?php  
 class msg{
 	public function showMSG($replyToken,$userId,$text){
-		//$this->conDB($replyToken,$userId,$text);
+		$this->conDB($replyToken,$userId,$text);
 		switch ($text) {
 			case 'as':
 				$this->replyMSG($replyToken,"ณัฐพล คำป่าแลว");
@@ -23,9 +23,9 @@ class msg{
 				$this->pushMSG($userId,"กรุณาเลือกเมนูที่ท่านต้องการ\n1.as\n2.bn\n3.cv\n4.แจ้งปัญหา\n\nขอบคุณครับ ");
 				break;
 		}
-		$this->replyMSG($userId);
+		
 	}
-	/*
+	
 	public function conDB($replyToken,$userId,$text){
 		$mysqli = new mysqli('mysql.hostinger.in.th','u412868043_line','line00--','u412868043_line');
 		mysqli_set_charset($mysqli,"utf8");
@@ -34,7 +34,7 @@ class msg{
 		$mysqli->close();
 		$this->replyMSG($userId);
 	
-	
+	/*
 	$host = 'mysql.hostinger.in.th';
    	$port = '3306';
     	$server = $host . ':' . $port;
