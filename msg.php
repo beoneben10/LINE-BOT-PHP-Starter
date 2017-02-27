@@ -38,11 +38,6 @@ class msg{
 					'type' => 'text',
 					'text' => $text
 				],
-				[
-					'type'=>'sticker',
-				    'packageId' => '1',
-				    'stickerId' => '3'
-				]
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
